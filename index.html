@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snake Neo — Powered by Farhan Khan</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a0f1f">
+  <link rel="icon" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Snake Neo <span class="badge">Full Release</span></h1>
+      <div class="byline">Powered by <strong>Farhan Khan</strong></div>
+    </header>
+
+    <main class="layout">
+      <section class="left panel">
+        <div class="hud">
+          <div class="stats">
+            <div class="stat">Score <span id="score">0</span></div>
+            <div class="stat">Best <span id="best">0</span></div>
+            <div class="stat">Speed <span id="speed">1x</span></div>
+            <div class="stat">Mode <span id="modeLabel">Normal</span></div>
+          </div>
+          <div class="controls">
+            <button id="startBtn">Start ▶</button>
+            <button id="restartBtn">Restart ↺</button>
+            <button id="pauseBtn">Pause ⏸</button>
+            <label class="toggle"><input type="checkbox" id="wrapToggle"/> Wrap walls</label>
+          </div>
+        </div>
+
+        <div class="canvas-wrap">
+          <canvas id="board" width="720" height="540" aria-label="Snake game canvas"></canvas>
+        </div>
+
+        <div class="dpad" aria-hidden="false">
+          <div class="row"><button data-dir="up">▲</button></div>
+          <div class="row"><button data-dir="left">◀</button><button data-dir="down">▼</button><button data-dir="right">▶</button></div>
+        </div>
+      </section>
+
+      <aside class="right panel">
+        <div class="tabs">
+          <button class="tab active" data-tab="settings">Settings</button>
+          <button class="tab" data-tab="achievements">Achievements</button>
+          <button class="tab" data-tab="leaderboard">Leaderboard</button>
+          <button class="tab" data-tab="shop">Shop</button>
+          <button class="tab" data-tab="about">About</button>
+        </div>
+
+        <div class="tabpanes">
+          <div class="tabpane active" id="settings">
+            <div class="group">
+              <label>Difficulty</label>
+              <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="normal" selected>Normal</option>
+                <option value="hard">Hard</option>
+              </select>
+            </div>
+            <div class="group">
+              <label>Board Size</label>
+              <select id="boardSize">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+            <div class="group">
+              <label>Theme</label>
+              <select id="theme">
+                <option value="neon" selected>Neon</option>
+                <option value="emerald">Emerald</option>
+                <option value="sunset">Sunset</option>
+              </select>
+            </div>
+            <div class="group">
+              <label><input type="checkbox" id="vibrate"> Vibration (mobile)</label>
+            </div>
+            <div class="group row">
+              <button id="saveSettings">Save Settings 💾</button>
+              <button id="resetProgress">Reset Progress 🗑</button>
+            </div>
+          </div>
+
+          <div class="tabpane" id="achievements">
+            <ul id="achList" class="list"></ul>
+          </div>
+
+          <div class="tabpane" id="leaderboard">
+            <div class="group">
+              <label>Player Name</label>
+              <input id="playerName" placeholder="Your name">
+              <button id="submitScore">Submit Local Score</button>
+            </div>
+            <ol id="localBoard" class="list num"></ol>
+            <p class="muted">Online leaderboard ready for backend (Firebase/Supabase). For now, scores are saved locally on this device.</p>
+          </div>
+
+          <div class="tabpane" id="shop">
+            <div class="grid shop-grid">
+              <button class="skin-card" data-skin="neon">Neon <span class="price">Free</span></button>
+              <button class="skin-card" data-skin="emerald">Emerald <span class="price">100</span></button>
+              <button class="skin-card" data-skin="sunset">Sunset <span class="price">100</span></button>
+            </div>
+            <p class="muted">Earn coins by scoring points. Cosmetics only.</p>
+          </div>
+
+          <div class="tabpane" id="about">
+            <p><strong>Snake Neo</strong> — a polished, fast, and responsive take on the classic. Built for web + PWA, with power-ups, themes, achievements, and a local leaderboard.</p>
+            <p>Share your best run: <button id="shareBtn">Share</button> <button id="shotBtn">Screenshot</button></p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      Use arrow keys / WASD. P = Pause. Tap D‑pad on mobile. Eat apples, avoid your tail. Toggle wrap mode for portal edges.
+    </footer>
+  </div>
+
+  <audio id="sEat" preload="auto" src="assets/eat.wav"></audio>
+  <audio id="sDie" preload="auto" src="assets/die.wav"></audio>
+
+  <script src="main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('service-worker.js'));
+    }
+  </script>
+</body>
+</html>

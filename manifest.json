@@ -1,0 +1,20 @@
+{
+  "name": "Snake Neo \u2014 Powered by Farhan Khan",
+  "short_name": "Snake Neo",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0f1f",
+  "theme_color": "#0a0f1f",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
