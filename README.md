@@ -6,7 +6,7 @@ Includes themes, power-ups, achievements, local leaderboard, shop, and PWA (offl
 ## 🎮 Live Demo
 Once deployed with GitHub Pages, play here:  
 ```
-https://YOUR_USERNAME.github.io/snake-neo-farhan/
+[https://YOUR_USERNAME.github.io/snake-neo-farhan/](https://farhankhan2903.github.io/snake-neo-farhan/)
 ```
 
 ## ✨ Features
